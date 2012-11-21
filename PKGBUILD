@@ -27,30 +27,24 @@ build() {
 		git clone $_gitroot $_gitname
 	fi
 	msg "GIT checkout done or server timeout"
-
-	blddir="${srcdir}/$_gitname-build"
-	rm -rf "${blddir}"
-	git clone "$srcdir/$_gitname"  ${blddir}
-	cd "${blddir}"
 }
 
 package() {
-	mkdir -p "${pkgdir}/etc/network.d/examples"
-	mkdir -p "${pkgdir}/etc/ppp/chatscripts"
-	mkdir -p "${pkgdir}/etc/ppp/peers"
-	install -Dm644 "${blddir}/ppp-mobile" "${pkgdir}/etc/network.d/examples/"
-	install -Dm644 "${blddir}/options-mobile" "${pkgdir}/etc/ppp/"
-	install -D "${blddir}/apn" "${pkgdir}/etc/ppp/chatscripts/"
-	install -Dm644 "${blddir}/apn.iinet" "${pkgdir}/etc/ppp/chatscripts/"
-	install -Dm644 "${blddir}/apn.optus-prepaid" "${pkgdir}/etc/ppp/chatscripts/"
-	install -Dm644 "${blddir}/mobile-modem.chat" "${pkgdir}/etc/ppp/chatscripts/"
-	install -D "${blddir}/mode" "${pkgdir}/etc/ppp/chatscripts/"
-	install -Dm644 "${blddir}/mode.3G-only" "${pkgdir}/etc/ppp/chatscripts/"
-	install -Dm644 "${blddir}/mode.3G-pref" "${pkgdir}/etc/ppp/chatscripts/"
-	install -Dm644 "${blddir}/mode.GPRS-only" "${pkgdir}/etc/ppp/chatscripts/"
-	install -Dm644 "${blddir}/mode.GPRS-pref" "${pkgdir}/etc/ppp/chatscripts/"
-	install -Dm644 "${blddir}/mode.NONE" "${pkgdir}/etc/ppp/chatscripts/"
-	install -D "${blddir}/pin" "${pkgdir}/etc/ppp/chatscripts/"
-	install -Dm644 "${blddir}/pin.NONE" "${pkgdir}/etc/ppp/chatscripts/"
-	install -Dm644 "${blddir}/mobile-noauth" "${pkgdir}/etc/ppp/peers/"
+	cp -rv "$_gitname/etc" "${pkgdir}/"
+#	install -D "${blddir}/etc" "${pkgdir}/"
+#	install -Dm644 "${blddir}/ppp-mobile" "${pkgdir}/etc/network.d/examples/"
+#	install -Dm644 "${blddir}/options-mobile" "${pkgdir}/etc/ppp/"
+#	install -D "${blddir}/apn" "${pkgdir}/etc/ppp/chatscripts/"
+#	install -Dm644 "${blddir}/apn.iinet" "${pkgdir}/etc/ppp/chatscripts/"
+#	install -Dm644 "${blddir}/apn.optus-prepaid" "${pkgdir}/etc/ppp/chatscripts/"
+#	install -Dm644 "${blddir}/mobile-modem.chat" "${pkgdir}/etc/ppp/chatscripts/"
+#	install -D "${blddir}/mode" "${pkgdir}/etc/ppp/chatscripts/"
+#	install -Dm644 "${blddir}/mode.3G-only" "${pkgdir}/etc/ppp/chatscripts/"
+#	install -Dm644 "${blddir}/mode.3G-pref" "${pkgdir}/etc/ppp/chatscripts/"
+#	install -Dm644 "${blddir}/mode.GPRS-only" "${pkgdir}/etc/ppp/chatscripts/"
+#	install -Dm644 "${blddir}/mode.GPRS-pref" "${pkgdir}/etc/ppp/chatscripts/"
+#	install -Dm644 "${blddir}/mode.NONE" "${pkgdir}/etc/ppp/chatscripts/"
+#	install -D "${blddir}/pin" "${pkgdir}/etc/ppp/chatscripts/"
+#	install -Dm644 "${blddir}/pin.NONE" "${pkgdir}/etc/ppp/chatscripts/"
+#	install -Dm644 "${blddir}/mobile-noauth" "${pkgdir}/etc/ppp/peers/"
 }
