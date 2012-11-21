@@ -1,14 +1,16 @@
 # Maintainer: Robbie Smith <zoqaeski AT gmail DOT com>
 # Contributor: Robbie Smith <zoqaeski AT gmail DOT com>
 pkgname=netcfg-ppp-mobile-git
-pkgver=1.0
-pkgrel=2
+pkgver=20121121
+pkgrel=1
 pkgdesc="PPP (mobile) support for netcfg (Git version). "
 url="https://wiki.archlinux.org/index.php/3G_and_GPRS_modems_with_pppd"
 arch=(i686 x86_64)
 license=('GPL')
 depends=('netcfg>=2.5' 'ppp')
+makedepends=('git')
 provides=(netcfg-ppp-mobile)
+conflicts=(netcfg-ppp-mobile)
 #source=(ppp-mobile.tar.xz)
 install=netcfg-ppp-mobile.install
 
