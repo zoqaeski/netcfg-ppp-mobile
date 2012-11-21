@@ -1,1 +1,1 @@
-OK 'AT+CGDCONT=1,"IP","preconnect"'
+AT+CGDCONT=1,"IP","preconnect"
